@@ -1,6 +1,12 @@
 
 var app = angular.module('app', ['ngResource', 'ngRoute']);
 
+app.config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
+]);
+
 /**
  * Configuração das Rotas (páginas do sistema)
  */
