@@ -1,0 +1,64 @@
+<h2>Produtos</h2>
+<hr/>
+<ul class="list-group">
+  <li class="list-group-item"  ng-repeat="produto in produtos">
+    <button class="btn btn-xs btn-danger pull-right" ng-click="excluir(produto)">Excluir</button>
+  	<h4>{{produto.id}} - {{produto.nome}}</h4>
+    <button class="btn btn-primary btn-sm" ng-click="abrirComprar(produto)">Comprar</button>
+  </li>
+</ul>
+<button class="btn btn-primary" ng-click="abrirNovoProduto()">Novo Produto</button>
+
+
+<div id="modal-novo-produto" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Novo Produto</h4>
+      </div>
+      <div class="modal-body">
+
+        <form>
+          <div class="form-group">
+            <label>Nome</label>
+            <input type="text" class="form-control" placeholder="Nome" ng-model="produtoAtual.nome">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" ng-click="salvarProduto()">Salvar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="modal-comprar" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Comprar</h4>
+      </div>
+      <div class="modal-body">
+        <p><strong>Produto:</strong> {{pedidoAtual.produtos[0].nome}}</p>
+
+        <form>
+          <div class="form-group">
+            <label>Quantidade</label>
+            <input type="number" class="form-control" placeholder="Quantidade" ng-model="pedidoAtual.produtos[0].quantidade">
+          </div>
+          <div class="form-group">
+            <label>Nome</label>
+            <input type="text" class="form-control" placeholder="Nome completo" ng-model="pedidoAtual.cliente.nome">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" ng-click="confirmarCompra()">Confirmar Compra</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
