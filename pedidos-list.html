@@ -1,13 +1,14 @@
 <h2>Pedidos</h2>
 <hr/>
-<div class="list-group">
-  <a class="list-group-item"  ng-repeat="pedido in pedidos">
+<ul class="list-group">
+  <li class="list-group-item"  ng-repeat="pedido in pedidos">
+    <button class="btn btn-xs btn-danger pull-right" ng-click="excluir(pedido)">Excluir</button>
   	<h4>Cliente: {{pedido.cliente.nome}}</h4>
     <h5>Produtos</h5>
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="produto in pedido.produtos">
-          {{produto.nome}}
+          {{produto.nome}} | Quantidade: {{produto.quantidade}}
       </li>
     </ul>
-  </a>
-</div>
+  </li>
+</ul>

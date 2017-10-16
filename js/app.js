@@ -78,7 +78,7 @@ app.controller('ProdutoController', function($scope, $routeParams, $route, $loca
 
 	$scope.excluir = function(produto) {
 		if(confirm('Confirma a Exclusão?')) {
-			ProdutoService.remove($scope.noticia, function(){
+			ProdutoService.remove(produto, function(){
 				alert('Produto Excluído!');
 				$scope.produtos = ProdutoService.query();
 		  });
@@ -103,6 +103,17 @@ app.controller('PedidoController', function($scope, $routeParams, $route, $locat
 	//Lista
 	$scope.list = function() {
 		$scope.pedidos = PedidoService.query();
+	}
+
+	$scope.excluir = function(pedido) {
+		pedido.id = pedido._id;
+		console.log(pedido);
+		if(confirm('Confirma a Exclusão?')) {
+			PedidoService.remove(pedido, function(){
+				alert('Pedido Excluído!');
+				$scope.pedidos = PedidoService.query();
+		  });
+		}
 	}
 
 	//Chama o método definido na rota
